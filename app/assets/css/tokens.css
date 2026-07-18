@@ -1,0 +1,78 @@
+:root {
+  /* Dark theme (default site background) */
+  --color-bg: #17161a;
+  --color-bg-elevated: #1e1d21;
+  --color-fg: #f2efe9;
+  --color-fg-muted: #c9c6c0;
+  --color-border: rgba(242, 239, 233, 0.2);
+  --color-vignette: rgba(0, 0, 0, 0.55);
+
+  /* Inverted theme (nav overlay) */
+  --color-inverted-bg: #f2efe9;
+  --color-inverted-fg: #17161a;
+  --color-inverted-fg-muted: #6b6862;
+  --color-inverted-border: rgba(23, 22, 26, 0.15);
+
+  /* Typography */
+  --font-serif: 'EB Garamond', 'Times New Roman', serif;
+  --font-sans: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+
+  --text-label: 0.8125rem;
+  --text-body: 1rem;
+  --text-heading: 1.75rem;
+  --text-display: 2.5rem;
+
+  --tracking-label: 0.08em;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  /* Layout */
+  --viewport-section: 832px;
+  --content-max-width: 1220px;
+  --page-gutter: 30px;
+
+  --z-nav-overlay: 200;
+  --z-header: 300;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  font-family: var(--font-serif);
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
