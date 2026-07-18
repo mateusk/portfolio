@@ -10,17 +10,16 @@ if (!project.value) {
   throw createError({ statusCode: 404, statusMessage: 'Project not found', fatal: true })
 }
 
-const { next } = await useNextProject(project.value.order)
+const { next } = await useNextInChain(`/projects/${slug}`)
 </script>
 
 <template>
   <div>
-    <BioHero />
     <ProjectCaseStudy
       v-if="project"
       :project="project"
-      :next-project-title="next?.title"
-      :next-project-slug="next?.slug"
+      :next-title="next?.title"
+      :next-path="next?.path"
     />
   </div>
 </template>

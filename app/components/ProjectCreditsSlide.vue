@@ -3,8 +3,8 @@ defineProps<{
   client?: string
   developedAt?: string
   designCredits?: string
-  nextProjectTitle?: string
-  nextProjectSlug?: string
+  nextTitle?: string
+  nextPath?: string
 }>()
 </script>
 
@@ -26,12 +26,12 @@ defineProps<{
     </dl>
 
     <NuxtLink
-      v-if="nextProjectSlug"
-      :to="`/projects/${nextProjectSlug}`"
+      v-if="nextPath"
+      :to="nextPath"
       class="project-credits-slide__next"
     >
       <span class="label">Next</span>
-      <span class="project-credits-slide__next-title">{{ nextProjectTitle }}</span>
+      <span class="project-credits-slide__next-title">{{ nextTitle }}</span>
     </NuxtLink>
   </section>
 </template>

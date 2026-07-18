@@ -20,8 +20,8 @@ interface Project {
 
 const props = defineProps<{
   project: Project
-  nextProjectTitle?: string
-  nextProjectSlug?: string
+  nextTitle?: string
+  nextPath?: string
 }>()
 
 const tickCount = computed(() => 2 + props.project.gallery.length)
@@ -51,8 +51,8 @@ const tickCount = computed(() => 2 + props.project.gallery.length)
       :client="project.client"
       :developed-at="project.developedAt"
       :design-credits="project.designCredits"
-      :next-project-title="nextProjectTitle"
-      :next-project-slug="nextProjectSlug"
+      :next-title="nextTitle"
+      :next-path="nextPath"
     />
   </div>
 </template>

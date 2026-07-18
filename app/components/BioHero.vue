@@ -2,6 +2,8 @@
 const { data: page } = await useAsyncData("page-about", () =>
   queryCollection("pages").path("/about").first(),
 );
+
+const { navigate } = await useScrollChainNavigation();
 </script>
 
 <template>
@@ -18,7 +20,13 @@ const { data: page } = await useAsyncData("page-about", () =>
     </div>
 
     <div class="footer">
-      <p class="label bio-hero__projects-label">Projects</p>
+      <button
+        type="button"
+        class="label bio-hero__projects-label"
+        @click="navigate('down')"
+      >
+        Projects
+      </button>
       <SocialLinks class="bio-hero__socials" />
     </div>
   </section>
@@ -74,6 +82,14 @@ const { data: page } = await useAsyncData("page-about", () =>
 
 .bio-hero__socials {
   color: var(--color-fg);
+}
+
+.bio-hero__projects-label {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
 }
 
 @media (max-width: 900px) {

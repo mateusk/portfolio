@@ -13,7 +13,6 @@ if (!artwork.value) {
 
 <template>
   <div>
-    <BioHero />
     <ArtworkShowcase v-if="artwork" :artwork="artwork" />
   </div>
 </template>

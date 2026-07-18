@@ -76,3 +76,70 @@ img {
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
 }
+
+/* Scroll-chain page transitions (see app/layouts/default.vue) */
+.scroll-next-enter-active,
+.scroll-next-leave-active,
+.scroll-prev-enter-active,
+.scroll-prev-leave-active {
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.scroll-next-enter-from {
+  transform: translateY(100%);
+}
+
+/* The leaving page is pulled out of normal document flow (position: fixed)
+   for the animation, which would otherwise reset it to its own top — losing
+   whatever scroll position the user was actually at. `--frozen-scroll` is set
+   in app/layouts/default.vue (onBeforeLeave, while the real scroll position
+   is still readable) and baked in as the starting offset, so the slide-out
+   continues from exactly where the page visually was. */
+.scroll-next-leave-from {
+  transform: translateY(calc(-1 * var(--frozen-scroll, 0px)));
+}
+
+.scroll-next-leave-to {
+  transform: translateY(calc(-100% - var(--frozen-scroll, 0px)));
+}
+
+.scroll-prev-leave-from {
+  transform: translateY(calc(-1 * var(--frozen-scroll, 0px)));
+}
+
+.scroll-prev-leave-to {
+  transform: translateY(calc(100% - var(--frozen-scroll, 0px)));
+}
+
+/* The entering page (scrolling up into the previous item) is bottom-anchored
+   for the duration of the slide, so its tail end is what's revealed —
+   matching where it ends up scrolled to once the transition finishes,
+   without needing to know its full height up front. */
+.scroll-prev-enter-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.scroll-prev-enter-active > * {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.scroll-prev-enter-from {
+  transform: translateY(-100%);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
