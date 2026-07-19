@@ -1,0 +1,12 @@
+# Custom Dictionary Words
+Accum
+bowie
+david
+github
+Grotesk
+Hanken
+inspark
+josquin
+monomith
+noopener
+noreferrer
