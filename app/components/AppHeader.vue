@@ -25,6 +25,12 @@ const { isOpen, toggle } = useNavOverlay();
       <span class="app-header__bar" />
       <span class="app-header__bar" />
     </button>
+    <div class="backdrop">
+      <div class="backdrop__layer" />
+      <div class="backdrop__layer" />
+      <div class="backdrop__layer" />
+      <div class="backdrop__layer" />
+    </div>
   </header>
 </template>
 
@@ -41,6 +47,54 @@ const { isOpen, toggle } = useNavOverlay();
   padding: var(--page-gutter);
   color: var(--color-fg);
   transition: color 0.2s ease;
+}
+
+/*
+ * A single blurred layer faded out with a transparency mask can't produce a
+ * true "100% blur -> 0% blur" transition — the blur radius stays constant,
+ * only its opacity changes, so what's underneath just becomes gradually more
+ * visible *through* a fixed blur. A real progressive blur needs several
+ * layers at increasing blur strengths, each fading out at a different point:
+ * near the top they compound (strong blur), and toward the bottom they drop
+ * away one at a time down to fully sharp.
+ */
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.backdrop__layer {
+  position: absolute;
+  inset: 0;
+}
+
+.backdrop__layer:nth-child(1) {
+  backdrop-filter: blur(20px);
+  mask-image: linear-gradient(to bottom, black 0%, transparent 30%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 30%);
+}
+
+.backdrop__layer:nth-child(2) {
+  backdrop-filter: blur(14px);
+  mask-image: linear-gradient(to bottom, black 0%, black 15%, transparent 55%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 15%, transparent 55%);
+}
+
+.backdrop__layer:nth-child(3) {
+  backdrop-filter: blur(8px);
+  mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 75%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 75%);
+}
+
+.backdrop__layer:nth-child(4) {
+  backdrop-filter: blur(4px);
+  mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
 }
 
 .app-header--inverted {
