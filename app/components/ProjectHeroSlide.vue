@@ -68,6 +68,8 @@ defineProps<{
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--space-xl);
   width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
 }
 
 .project-hero-slide__tagline {

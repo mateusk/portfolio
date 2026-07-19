@@ -42,6 +42,8 @@ defineProps<{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
   padding: var(--page-gutter);
   padding-top: var(--space-xl);
   padding-bottom: var(--space-xl);

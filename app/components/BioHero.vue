@@ -11,12 +11,14 @@ const { navigate } = await useScrollChainNavigation();
     v-if="page"
     class="bio-hero"
   >
-    <div class="headline">
-      <h1>{{ page.headline }}</h1>
-    </div>
+    <div class="bio-hero__inner">
+      <div class="headline">
+        <h1>{{ page.headline }}</h1>
+      </div>
 
-    <div class="content">
-      <ContentRenderer :value="page" />
+      <div class="content">
+        <ContentRenderer :value="page" />
+      </div>
     </div>
 
     <div class="footer">
@@ -36,11 +38,18 @@ const { navigate } = await useScrollChainNavigation();
 .bio-hero {
   position: relative;
   min-height: var(--viewport-section);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  display: flex;
   align-items: center;
   padding: var(--page-gutter);
   padding-top: calc(var(--page-gutter) * 3);
+}
+
+.bio-hero__inner {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
 .headline {
@@ -94,11 +103,14 @@ const { navigate } = await useScrollChainNavigation();
 
 @media (max-width: 900px) {
   .bio-hero {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
     min-height: auto;
     padding-top: calc(var(--page-gutter) * 3);
     padding-bottom: var(--space-xl);
+  }
+
+  .bio-hero__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
   }
 
   .headline h1 {

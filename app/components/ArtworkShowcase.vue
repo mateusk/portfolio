@@ -47,6 +47,8 @@ defineProps<{
 
 <style scoped>
 .artwork-showcase {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
   padding: var(--page-gutter);
   padding-bottom: var(--space-xl);
 }
