@@ -1,11 +1,18 @@
 <script setup lang="ts">
-const { isOpen, toggle } = useNavOverlay()
+const { isOpen, toggle } = useNavOverlay();
 </script>
 
 <template>
-  <header class="app-header" :class="{ 'app-header--inverted': isOpen }">
-    <NuxtLink to="/" class="app-header__logo" aria-label="Home">
-      <IconsIconLogo />
+  <header
+    class="app-header"
+    :class="{ 'app-header--inverted': isOpen }"
+  >
+    <NuxtLink
+      to="/"
+      class="app-header__logo"
+      aria-label="Home"
+    >
+      <Logo :color="isOpen ? 'dark' : 'light'" />
     </NuxtLink>
     <button
       type="button"
@@ -63,7 +70,9 @@ const { isOpen, toggle } = useNavOverlay()
   width: 100%;
   height: 1px;
   background: currentColor;
-  transition: top 0.25s ease, transform 0.25s ease;
+  transition:
+    top 0.25s ease,
+    transform 0.25s ease;
 }
 
 .app-header__bar:first-child {
