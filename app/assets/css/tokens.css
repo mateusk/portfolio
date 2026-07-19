@@ -32,7 +32,7 @@
   --space-xl: 4rem;
 
   /* Layout */
-  --viewport-section: 832px;
+  --viewport-section: 100vh;
   --content-max-width: 1220px;
   --page-gutter: 30px;
 
